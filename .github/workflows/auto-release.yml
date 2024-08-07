@@ -16,7 +16,7 @@ jobs:
           # Check if version input is empty
           if [[ -z "${{ github.event.inputs.version }}" || "${{ github.event.inputs.version }}" == "null" ]]; then
             # Get the latest version of fluent icon from GitHub API
-            version=$(curl -s https://api.github.com/repos/microsoft/fluentui-system-icons/releases/latest | jq -r '.tag_name')
+            version=$(curl -s https://api.github.com/repos/microsoft/fluentui-system-icons/tags | jq -r 'sort_by(.name) | last(.[]).name')
           else
             # Use given version for release
             version=${{ github.event.inputs.version }}
