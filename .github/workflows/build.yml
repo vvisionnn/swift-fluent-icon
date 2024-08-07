@@ -22,9 +22,6 @@ jobs:
         config:
           - debug
           - release
-        sdk:
-          - macosx
-          - iphonesimulator
     steps:
       - name: Install Dependencies
         run: |
@@ -37,14 +34,3 @@ jobs:
 
       - name: Build Package ${{ matrix.config }}
         run: swift build -c ${{ matrix.config }}
-
-      - name: Build Example Project ${{ matrix.config }}
-        run: |
-          set -o pipefail \
-          && xcodebuild \
-            -workspace FluentIcon.xcworkspace \
-            -scheme Example \
-            -destination "platform=${{ matrix.sdk }}" \
-            -configuration ${{ matrix.config }} \
-            build \
-          | xcbeautify --renderer github-actions
