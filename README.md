@@ -9,4 +9,4 @@
 > [!IMPORTANT]  
 > highly inspired by [Font Awesome](https://fontawesome.com/) and [LiveUI/Awesome](https://github.com/LiveUI/Awesome)
 
-a swift library for packaging fluent icon into you app
+a swift library for packaging [fluent icon](https://github.com/microsoft/fluentui-system-icons) into you app without any cost, no need to delete unused resources just use like SF Symbol but type safe
