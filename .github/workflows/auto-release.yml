@@ -53,11 +53,15 @@ jobs:
           # Commit updated Package.swift
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add .
-          git commit -m "chore(release): ${{ env.LATEST_FLUENT_ICON }}"
-          git push origin main
-
-          # Tag and release new version
-          git tag ${{ env.LATEST_FLUENT_ICON }}
-          git push origin ${{ env.LATEST_FLUENT_ICON }}
-          # gh release create ${{ env.LATEST_FLUENT_ICON }} ${{ env.REALM_PATH }} ${{ env.REALM_SWIFT_PATH }} -F ${{ env.RELEASE_NOTES }}
+          # check if local change exist
+          if [[ -n $(git status --porcelain) ]]; then
+            git add .
+            git commit -m "chore(release): ${{ env.LATEST_FLUENT_ICON }}"
+            git push origin 
+            # Tag and release new version
+            git tag ${{ env.LATEST_FLUENT_ICON }}
+            git push origin ${{ env.LATEST_FLUENT_ICON }}
+            # gh release create ${{ env.LATEST_FLUENT_ICON }} ${{ env.REALM_PATH }} ${{ env.REALM_SWIFT_PATH }} -F ${{ env.RELEASE_NOTES }}
+          else
+            echo "No changes detected, skipping release"
+          fi
