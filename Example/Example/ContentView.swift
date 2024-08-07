@@ -25,11 +25,11 @@ struct ContentView: View {
 							.frame(width: columnWidth, height: columnWidth)
 							.background(
 								RoundedRectangle(cornerRadius: 16, style: .continuous)
-									.foregroundStyle(Color(uiColor: .secondarySystemBackground))
+									.foregroundStyle(Color.gray.opacity(0.1))
 									.overlay(content: {
 										RoundedRectangle(cornerRadius: 16, style: .continuous)
 											.stroke(lineWidth: 1 / 3)
-											.foregroundStyle(Color(uiColor: .separator))
+											.foregroundStyle(Color.gray.opacity(0.4))
 									})
 							)
 					}

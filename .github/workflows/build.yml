@@ -22,9 +22,20 @@ jobs:
         config:
           - debug
           - release
+        sdk:
+          - macosx
+          - iphonesimulator
     steps:
       - uses: actions/checkout@v4
       - name: Select Xcode 15.4
         run: sudo xcode-select -s /Applications/Xcode_15.4.app
-      - name: Build ${{ matrix.config }}
+      - name: Build Package ${{ matrix.config }}
         run: swift build -c ${{ matrix.config }}
+      - name: Build Example Project ${{ matrix.config }}
+        run: |
+          xcodebuild \
+            -workspace FluentIcon.xcworkspace \
+            -scheme Example \
+            -destination "platform=${{ matrix.sdk }}" \
+            -configuration ${{ matrix.config }} \
+            build

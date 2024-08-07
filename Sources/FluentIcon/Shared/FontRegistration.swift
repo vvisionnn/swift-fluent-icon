@@ -3,7 +3,7 @@ import CoreText
 import Foundation
 
 extension String {
-	static let fluentIconName = "FluentSystemIcons-Resizable"
+	package static let fluentIconName = "FluentSystemIcons-Resizable"
 }
 
 public enum FontRegistration {
@@ -13,15 +13,16 @@ public enum FontRegistration {
 #else
 		let fontBundle = bundle ?? Bundle(for: Self.self)
 #endif
-		registerFont(bundle: fontBundle, fontName: "FluentSystemIcons-Resizable", fontExtension: "ttf")
+		registerFont(bundle: fontBundle, fontName: .fluentIconName, fontExtension: "ttf")
 	}
 
 	fileprivate static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) {
+		// registry when it is capable
 		guard let fontURL = bundle.url(forResource: fontName, withExtension: fontExtension),
 		      let fontDataProvider = CGDataProvider(url: fontURL as CFURL),
 		      let font = CGFont(fontDataProvider)
-		else { fatalError("Couldn't create font from data") }
-		var error: Unmanaged<CFError>?
-		CTFontManagerRegisterGraphicsFont(font, &error)
+		else { return }
+		// ignore error
+		CTFontManagerRegisterGraphicsFont(font, nil)
 	}
 }
