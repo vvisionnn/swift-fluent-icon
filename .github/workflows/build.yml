@@ -22,8 +22,6 @@ jobs:
         config:
           - debug
           - release
-        device:
-          - iPhone 15 Pro
     steps:
       - uses: actions/checkout@v4
       - name: Select Xcode 15.4
