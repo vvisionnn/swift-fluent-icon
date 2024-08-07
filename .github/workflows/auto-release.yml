@@ -1,0 +1,65 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release ex.: "1.1.252" (leave blank for latest)'
+        required: false
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - name: Get latest fluent icon version
+        run: |
+          # Check if version input is empty
+          if [[ -z "${{ github.event.inputs.version }}" || "${{ github.event.inputs.version }}" == "null" ]]; then
+            # Get the latest version of fluent icon from GitHub API
+            version=$(curl -s https://api.github.com/repos/microsoft/fluentui-system-icons/releases/latest | jq -r '.tag_name')
+          else
+            # Use given version for release
+            version=${{ github.event.inputs.version }}
+          fi
+          echo "LATEST_FLUENT_ICON=$version" >> $GITHUB_ENV
+      - name: Get latest package version
+        run: |
+          # Get the latest version of the binary from GitHub API
+          version=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name')
+          echo "LATEST_RELEASE=$version" >> $GITHUB_ENV
+      - name: Check for updates
+        run: |
+          # Exit if no updates are available
+          if [[ "${{ env.LATEST_FLUENT_ICON }}" == "${{ env.LATEST_RELEASE }}" ]]; then
+            echo "Latest version of Realm is already released!"
+            exit 1
+          fi
+      - name: Checkout fluent icon to tmp folder
+        uses: actions/checkout@v4
+        with:
+          repository: "microsoft/fluentui-system-icons"
+          ref: ${{ env.LATEST_FLUENT_ICON }}
+          path: /tmp/fluent
+
+      - name: Checkout package repo
+        uses: actions/checkout@v4
+
+      - name: Install bun.js
+        uses: oven-sh/setup-bun@v2
+
+      - name: Generate new package content
+        run: bun run .generator/index.ts --input /tmp/fluent --output .
+
+      - name: Release new binaries
+        run: |
+          # Commit updated Package.swift
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "chore(release): ${{ env.LATEST_FLUENT_ICON }}"
+          git push origin main
+
+          # Tag and release new version
+          git tag ${{ env.LATEST_FLUENT_ICON }}
+          git push origin ${{ env.LATEST_FLUENT_ICON }}
+          # gh release create ${{ env.LATEST_FLUENT_ICON }} ${{ env.REALM_PATH }} ${{ env.REALM_SWIFT_PATH }} -F ${{ env.RELEASE_NOTES }}

@@ -1,0 +1,30 @@
+name: Build Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "*"
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  library-check:
+    name: Library (Swift 5.10)
+    runs-on: macos-14
+    strategy:
+      matrix:
+        config:
+          - debug
+          - release
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode 15.4
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+      - name: Build ${{ matrix.config }}
+        run: swift build -c ${{ matrix.config }}
