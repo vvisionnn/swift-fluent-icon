@@ -35,11 +35,9 @@ jobs:
             exit 1
           fi
       - name: Checkout fluent icon to tmp folder
-        uses: actions/checkout@v4
-        with:
-          repository: "microsoft/fluentui-system-icons"
-          ref: ${{ env.LATEST_FLUENT_ICON }}
-          path: /tmp/fluent
+        run: |
+          mkdir -p /tmp/fluent
+          git clone --depth 1 --branch ${{ env.LATEST_FLUENT_ICON }} https://github.com/microsoft/fluentui-system-icons /tmp/fluent
 
       - name: Checkout package repo
         uses: actions/checkout@v4
