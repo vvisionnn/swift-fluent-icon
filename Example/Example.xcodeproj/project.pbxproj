@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B369E982C63E80400D0864D /* FluentIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 8B369E972C63E80400D0864D /* FluentIcon */; };
 		8B91EB872C63AB6000434D09 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91EB862C63AB6000434D09 /* ExampleApp.swift */; };
 		8B91EB892C63AB6000434D09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91EB882C63AB6000434D09 /* ContentView.swift */; };
 		8B91EB8B2C63AB6100434D09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B91EB8A2C63AB6100434D09 /* Assets.xcassets */; };
 		8B91EB8F2C63AB6100434D09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B91EB8E2C63AB6100434D09 /* Preview Assets.xcassets */; };
-		8B91EB972C63B2D000434D09 /* FluentIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 8B91EB962C63B2D000434D09 /* FluentIcon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B91EB972C63B2D000434D09 /* FluentIcon in Frameworks */,
+				8B369E982C63E80400D0864D /* FluentIcon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				8B91EB962C63B2D000434D09 /* FluentIcon */,
+				8B369E972C63E80400D0864D /* FluentIcon */,
 			);
 			productName = Example;
 			productReference = 8B91EB832C63AB6000434D09 /* Example.app */;
@@ -126,6 +126,9 @@
 				Base,
 			);
 			mainGroup = 8B91EB7A2C63AB6000434D09;
+			packageReferences = (
+				8B369E962C63E80400D0864D /* XCLocalSwiftPackageReference "../../swift-fluent-icon" */,
+			);
 			productRefGroup = 8B91EB842C63AB6000434D09 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -369,8 +372,15 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		8B369E962C63E80400D0864D /* XCLocalSwiftPackageReference "../../swift-fluent-icon" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../swift-fluent-icon";
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		8B91EB962C63B2D000434D09 /* FluentIcon */ = {
+		8B369E972C63E80400D0864D /* FluentIcon */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FluentIcon;
 		};
