@@ -9,6 +9,9 @@ concurrency:
   group: format-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   swift_format:
     name: swift-format
