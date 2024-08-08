@@ -51,6 +51,7 @@ const generateSwiftEnum = async (
     ([name, unicode]) => {
       name = name
         .replace("ic_fluent_", "")
+        .replace("_regular", "")
         .replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
       unicode = `${(unicode as number).toString(16)}`;
       return [name, unicode];
@@ -61,6 +62,7 @@ const generateSwiftEnum = async (
     ([name, unicode]) => {
       name = name
         .replace("ic_fluent_", "")
+        .replace("_filled", "")
         .replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
       unicode = `${(unicode as number).toString(16)}`;
       return [name, unicode];
@@ -71,6 +73,7 @@ const generateSwiftEnum = async (
     ([name, unicode]) => {
       name = name
         .replace("ic_fluent_", "")
+        .replace("_light", "")
         .replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
       unicode = `${(unicode as number).toString(16)}`;
       return [name, unicode];
