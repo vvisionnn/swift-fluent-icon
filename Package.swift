@@ -3,24 +3,24 @@
 
 import PackageDescription
 let package = Package(
-	name: "swift-fluent-icon",
-	platforms: [.iOS(.v15), .macOS(.v12)],
-	products: [
-		.library(
-			name: "FluentIcon",
-			targets: ["FluentIcon"]
-		),
-	],
-	dependencies: [],
-	targets: [
-		.target(
-			name: "FluentIcon",
-			dependencies: [],
-			resources: [.process("Resources")]
-		),
-		.testTarget(
-			name: "FluentIconTests",
-			dependencies: ["FluentIcon"]
-		),
-	]
+  name: "swift-fluent-icon",
+  platforms: [.iOS(.v15), .macOS(.v12)],
+  products: [
+    .library(
+      name: "FluentIcon",
+      targets: ["FluentIcon"]
+    ),
+  ],
+  dependencies: [],
+  targets: [
+    .target(
+      name: "FluentIcon",
+      dependencies: [],
+      resources: [.process("Resources")]
+    ),
+    .testTarget(
+      name: "FluentIconTests",
+      dependencies: ["FluentIcon"]
+    ),
+  ]
 )
