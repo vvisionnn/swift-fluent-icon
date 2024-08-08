@@ -30,16 +30,21 @@ const generateSwiftEnum = async (
       // remove `ic_fluent_` prefix for name
       name = name.replace("ic_fluent_", "");
       // convert from snake_case to camelCase
-      name = name.replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
+      name = name
+        .replace("20_", "")
+        .replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
       // convert unicode decimal to hex
       unicode = `${(unicode as number).toString(16)}`;
-      return `case ${name} = "\\u\{${unicode}\}"`;
+      return [name, unicode];
     }
   );
 
-  const enumContent = `
-public enum ${enumName}: String, CaseIterable, Sendable {
-  ${enumValues.join("\n  ")}
+  const enumContent = `public enum ${enumName}: String, CaseIterable, Sendable {
+  ${enumValues
+    .map(([name, unicode]) => {
+      return `case ${name} = "\\u\{${unicode}\}"`;
+    })
+    .join("\n  ")}
 }`;
 
   fs.writeFileSync(`${enumDestPath}/${enumName}.swift`, enumContent);

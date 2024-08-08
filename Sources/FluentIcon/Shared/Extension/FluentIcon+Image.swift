@@ -7,6 +7,7 @@ extension FluentIcon {
 	public struct Image<FluentType>: View where FluentType: Fluent {
 		var icon: FluentType
 
+		@Environment(\.colorScheme) var colorScheme
 		@Environment(\.imageScale) var imageScale
 		@Environment(\.font) var font
 
@@ -50,7 +51,11 @@ extension FluentIcon {
 		public init(icon: FluentType) {
 			self.icon = icon
 			self.forcedSize = nil
-			self.foregroundColor = .black
+			#if os(iOS)
+			self.foregroundColor = UIColor.label
+			#elseif os(macOS)
+			self.foregroundColor = NSColor.labelColor
+			#endif
 			self.backgroundColor = .clear
 			self.isResizable = false
 			self.capInsets = EdgeInsets()
