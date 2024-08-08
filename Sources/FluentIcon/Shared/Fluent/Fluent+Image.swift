@@ -103,6 +103,5 @@ extension Fluent.Image {
 			self.init()
 		}
 	}
-
 	#endif
 }

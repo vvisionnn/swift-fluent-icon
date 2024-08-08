@@ -41,14 +41,10 @@ extension Font {
 extension Image.Scale {
 	var value: CGFloat {
 		switch self {
-		case .small:
-			return 1 / 1.28571429
-		case .medium:
-			return 1
-		case .large:
-			return 1.28571429
-		@unknown default:
-			return 1
+		case .small: 1 / 1.28571429
+		case .medium: 1
+		case .large: 1.28571429
+		@unknown default: 1
 		}
 	}
 }

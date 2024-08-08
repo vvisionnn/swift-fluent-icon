@@ -3,8 +3,6 @@ import CoreText
 import Foundation
 
 public enum FontRegistration {
-	// MARK: Public
-
 	public static func registerFonts(from bundle: Bundle? = nil) {
 		#if SWIFT_PACKAGE
 		let fontBundle = bundle ?? Bundle.module
@@ -15,8 +13,6 @@ public enum FontRegistration {
 			registerFont(bundle: fontBundle, fontName: font.file, fontExtension: "ttf")
 		}
 	}
-
-	// MARK: Fileprivate
 
 	fileprivate static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) {
 		// registry when it is capable

@@ -5,7 +5,42 @@ import SwiftUI
 extension FluentIcon {
 	/// A view wrapper around an Awesome.Image
 	public struct Image<FluentType>: View where FluentType: Fluent {
-		// MARK: Lifecycle
+		var icon: FluentType
+
+		@Environment(\.colorScheme) var colorScheme
+		@Environment(\.imageScale) var imageScale
+		@Environment(\.font) var font
+
+		var size: CGSize {
+			if let size = forcedSize { return size }
+			let textStyle = font?.textStyle ?? .body
+			let size = Fluent.Font.preferredFont(forTextStyle: textStyle).pointSize * imageScale.value
+			return CGSize(width: size, height: size)
+		}
+
+		var image: SwiftUI.Image {
+			#if os(iOS) || os(watchOS) || os(tvOS)
+			SwiftUI.Image(uiImage: icon.asImage(
+				size: size,
+				color: foregroundColor,
+				backgroundColor: backgroundColor
+			))
+			#elseif os(macOS)
+			SwiftUI.Image(nsImage: icon.asImage(
+				size: size,
+				color: foregroundColor,
+				backgroundColor: backgroundColor
+			))
+			#endif
+		}
+
+		private var forcedSize: CGSize?
+		private var foregroundColor: Fluent.Color
+		private var backgroundColor: Fluent.Color
+
+		private var isResizable: Bool
+		private var capInsets: EdgeInsets
+		private var resizingMode: SwiftUI.Image.ResizingMode
 
 		/// Creates a Font Awesome icon image.
 		///
@@ -26,8 +61,6 @@ extension FluentIcon {
 			self.capInsets = EdgeInsets()
 			self.resizingMode = .stretch
 		}
-
-		// MARK: Public
 
 		public var body: some View {
 			if isResizable {
@@ -91,58 +124,13 @@ extension FluentIcon {
 		public func resizable(
 			capInsets: EdgeInsets = EdgeInsets(),
 			resizingMode: SwiftUI.Image.ResizingMode = .stretch
-		)
-			-> Self {
+		) -> Self {
 			var view = self
 			view.isResizable = true
 			view.capInsets = capInsets
 			view.resizingMode = resizingMode
 			return view
 		}
-
-		// MARK: Internal
-
-		var icon: FluentType
-
-		@Environment(\.colorScheme)
-		var colorScheme
-		@Environment(\.imageScale)
-		var imageScale
-		@Environment(\.font)
-		var font
-
-		var size: CGSize {
-			if let size = forcedSize { return size }
-			let textStyle = font?.textStyle ?? .body
-			let size = Fluent.Font.preferredFont(forTextStyle: textStyle).pointSize * imageScale.value
-			return CGSize(width: size, height: size)
-		}
-
-		var image: SwiftUI.Image {
-			#if os(iOS) || os(watchOS) || os(tvOS)
-			SwiftUI.Image(uiImage: icon.asImage(
-				size: size,
-				color: foregroundColor,
-				backgroundColor: backgroundColor
-			))
-			#elseif os(macOS)
-			SwiftUI.Image(nsImage: icon.asImage(
-				size: size,
-				color: foregroundColor,
-				backgroundColor: backgroundColor
-			))
-			#endif
-		}
-
-		// MARK: Private
-
-		private var forcedSize: CGSize?
-		private var foregroundColor: Fluent.Color
-		private var backgroundColor: Fluent.Color
-
-		private var isResizable: Bool
-		private var capInsets: EdgeInsets
-		private var resizingMode: SwiftUI.Image.ResizingMode
 	}
 }
 #endif

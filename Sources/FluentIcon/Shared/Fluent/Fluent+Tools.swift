@@ -13,8 +13,7 @@ extension Fluent {
 		size: CGSize,
 		color: Color = Color.black,
 		backgroundColor: Color = Color.clear
-	)
-		-> Fluent.Image {
+	) -> Fluent.Image {
 		Image(icon: self, size: size, color: color, backgroundColor: backgroundColor)
 	}
 
@@ -29,8 +28,7 @@ extension Fluent {
 		size: CGFloat,
 		color: Color = Color.black,
 		backgroundColor: Color = Color.clear
-	)
-		-> Fluent.Image {
+	) -> Fluent.Image {
 		Image(
 			icon: self,
 			size: CGSize(width: size, height: size),
@@ -50,8 +48,7 @@ extension Fluent {
 		fontSize: CGFloat,
 		color: Color = Color.black,
 		backgroundColor: Color = Color.clear
-	)
-		-> NSAttributedString {
+	) -> NSAttributedString {
 		NSAttributedString(
 			icon: self,
 			fontSize: fontSize,
