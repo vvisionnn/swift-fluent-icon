@@ -28,14 +28,14 @@ jobs:
           echo "LATEST_FLUENT_ICON=$version" >> $GITHUB_ENV
       - name: Get latest package version
         run: |
-          # Get the latest version of the binary from GitHub API
+          # Get the latest version of release from GitHub API
           version=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name')
           echo "LATEST_RELEASE=$version" >> $GITHUB_ENV
       - name: Check for updates
         run: |
           # Exit if no updates are available
           if [[ "${{ env.LATEST_FLUENT_ICON }}" == "${{ env.LATEST_RELEASE }}" ]]; then
-            echo "Latest version of Realm is already released!"
+            echo "Latest version of Fluent Icons is already released!"
             exit 1
           fi
       - name: Checkout fluent icon to tmp folder
@@ -46,13 +46,17 @@ jobs:
       - name: Checkout package repo
         uses: actions/checkout@v4
 
-      - name: Install bun.js
-        uses: oven-sh/setup-bun@v2
+      - name: Install Dev Tools
+        run: |
+          brew install mise
+          mise install
 
       - name: Generate new package content
-        run: bun run .generator/index.ts --input /tmp/fluent --output .
+        run: |
+          bun run .generator/index.ts --input /tmp/fluent --output .
+          swiftformat .
 
-      - name: Release new binaries
+      - name: Release new version
         run: |
           # Commit updated Package.swift
           git config user.name "${{ github.actor }}"
@@ -65,7 +69,6 @@ jobs:
             # Tag and release new version
             git tag ${{ env.LATEST_FLUENT_ICON }}
             git push origin ${{ env.LATEST_FLUENT_ICON }}
-            # gh release create ${{ env.LATEST_FLUENT_ICON }} ${{ env.REALM_PATH }} ${{ env.REALM_SWIFT_PATH }} -F ${{ env.RELEASE_NOTES }}
           else
             echo "No changes detected, skipping release"
           fi
