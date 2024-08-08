@@ -2,29 +2,29 @@ import Foundation
 
 #if os(iOS) || os(watchOS) || os(tvOS)
 
-  import UIKit
+import UIKit
 
-  extension Fluent {
-    public typealias Color = UIColor
-    public typealias Font = UIFont
-    public typealias Image = UIImage
-  }
+extension Fluent {
+	public typealias Color = UIColor
+	public typealias Font = UIFont
+	public typealias Image = UIImage
+}
 
 #elseif os(OSX)
-  import AppKit
-  import Cocoa
+import AppKit
+import Cocoa
 
-  extension Fluent {
-    public typealias Color = NSColor
-    public typealias Font = NSFont
-    public typealias Image = NSImage
-  }
+extension Fluent {
+	public typealias Color = NSColor
+	public typealias Font = NSFont
+	public typealias Image = NSImage
+}
 
-  extension Fluent.Font {
-    static func fontNames(forFamilyName: String) -> [String] {
-      NSFontManager.shared.availableMembers(ofFontFamily: forFamilyName)?
-        .compactMap { $0.first as? String } ?? []
-    }
-  }
+extension Fluent.Font {
+	static func fontNames(forFamilyName: String) -> [String] {
+		NSFontManager.shared.availableMembers(ofFontFamily: forFamilyName)?
+			.compactMap { $0.first as? String } ?? []
+	}
+}
 
 #endif
