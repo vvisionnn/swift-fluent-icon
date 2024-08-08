@@ -14,7 +14,7 @@ extension NSAttributedString {
 		backgroundColor: Fluent.Color = .clear
 	) {
 		FontRegistration.registerFonts()
-		guard let font = Fluent.Font(name: .fluentIconName, size: fontSize) else {
+		guard let font = Fluent.Font(name: icon.fontType.file, size: fontSize) else {
 			fatalError("Fluent Icon font not loaded properly. Did you forget to call FontRegistration.registerFonts()?")
 		}
 

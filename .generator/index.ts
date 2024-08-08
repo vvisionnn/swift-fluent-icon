@@ -14,18 +14,27 @@ const generateSwiftEnum = async (
   }
 
   const resizableJsonPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Resizable.json`;
-  if (!fs.existsSync(resizableJsonPath)) {
-    consola.error(
-      `Fluent Icon project does not contain the required file: ${resizableJsonPath}`
-    );
+  const regularJsonPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Regular.json`;
+  const filledJsonPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Filled.json`;
+  const lightJsonPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Light.json`;
+  if (
+    !fs.existsSync(resizableJsonPath) ||
+    !fs.existsSync(regularJsonPath) ||
+    !fs.existsSync(filledJsonPath) ||
+    !fs.existsSync(lightJsonPath)
+  ) {
+    consola.error(`Fluent Icon project does not contain the required files`);
     throw new Error("Fluent Icon project does not contain the required file");
   }
 
   // name => unicode decimal
   const resizableJson = fs.readFileSync(resizableJsonPath, "utf8");
+  const regularJson = fs.readFileSync(regularJsonPath, "utf8");
+  const filledJson = fs.readFileSync(filledJsonPath, "utf8");
+  const lightJson = fs.readFileSync(lightJsonPath, "utf8");
 
   const enumName = "FluentIcon";
-  const enumValues = Object.entries(JSON.parse(resizableJson)).map(
+  const resizableEnumValues = Object.entries(JSON.parse(resizableJson)).map(
     ([name, unicode]) => {
       // remove `ic_fluent_` prefix for name
       name = name.replace("ic_fluent_", "");
@@ -38,13 +47,68 @@ const generateSwiftEnum = async (
       return [name, unicode];
     }
   );
+  const regularEnumValues = Object.entries(JSON.parse(regularJson)).map(
+    ([name, unicode]) => {
+      name = name
+        .replace("ic_fluent_", "")
+        .replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
+      unicode = `${(unicode as number).toString(16)}`;
+      return [name, unicode];
+    }
+  );
 
-  const enumContent = `public enum ${enumName}: String, CaseIterable, Sendable {
-  ${enumValues
-    .map(([name, unicode]) => {
-      return `case ${name} = "\\u\{${unicode}\}"`;
-    })
-    .join("\n  ")}
+  const filledEnumValues = Object.entries(JSON.parse(filledJson)).map(
+    ([name, unicode]) => {
+      name = name
+        .replace("ic_fluent_", "")
+        .replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
+      unicode = `${(unicode as number).toString(16)}`;
+      return [name, unicode];
+    }
+  );
+
+  const lightEnumValues = Object.entries(JSON.parse(lightJson)).map(
+    ([name, unicode]) => {
+      name = name
+        .replace("ic_fluent_", "")
+        .replace(/_([a-z|0-9])/g, (g) => g[1].toUpperCase());
+      unicode = `${(unicode as number).toString(16)}`;
+      return [name, unicode];
+    }
+  );
+
+  const enumContent = `public enum ${enumName} {
+  public enum Resizable: String, CaseIterable, Sendable {
+    ${resizableEnumValues
+      .map(([name, unicode]) => {
+        return `case ${name} = "\\u\{${unicode}\}"`;
+      })
+      .join("\n    ")}
+  }
+
+  public enum Regular: String, CaseIterable, Sendable {
+    ${regularEnumValues
+      .map(([name, unicode]) => {
+        return `case ${name} = "\\u\{${unicode}\}"`;
+      })
+      .join("\n    ")}
+  }
+
+  public enum Filled: String, CaseIterable, Sendable {
+    ${filledEnumValues
+      .map(([name, unicode]) => {
+        return `case ${name} = "\\u\{${unicode}\}"`;
+      })
+      .join("\n    ")}
+  }
+
+  public enum Light: String, CaseIterable, Sendable {
+    ${lightEnumValues
+      .map(([name, unicode]) => {
+        return `case ${name} = "\\u\{${unicode}\}"`;
+      })
+      .join("\n    ")}
+  }
 }`;
 
   fs.writeFileSync(`${enumDestPath}/${enumName}.swift`, enumContent);
@@ -55,15 +119,24 @@ const copyRequiredResources = async (
   destPath: string
 ) => {
   fs.mkdirSync(destPath, { recursive: true });
-  const fontPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Resizable.ttf`;
-  if (!fs.existsSync(fontPath)) {
+  const resizableFontPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Resizable.ttf`;
+  const regularFontPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Regular.ttf`;
+  const filledFontPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Filled.ttf`;
+  const lightFontPath = `${fluentIconProjectPath}/fonts/FluentSystemIcons-Light.ttf`;
+  if (!fs.existsSync(resizableFontPath)) {
     consola.error(
-      `Fluent Icon project does not contain the required file: ${fontPath}`
+      `Fluent Icon project does not contain the required file: ${resizableFontPath}`
     );
     throw new Error("Fluent Icon project does not contain the required file");
   }
 
-  fs.copyFileSync(fontPath, `${destPath}/FluentSystemIcons-Resizable.ttf`);
+  fs.copyFileSync(
+    resizableFontPath,
+    `${destPath}/FluentSystemIcons-Resizable.ttf`
+  );
+  fs.copyFileSync(regularFontPath, `${destPath}/FluentSystemIcons-Regular.ttf`);
+  fs.copyFileSync(filledFontPath, `${destPath}/FluentSystemIcons-Filled.ttf`);
+  fs.copyFileSync(lightFontPath, `${destPath}/FluentSystemIcons-Light.ttf`);
 };
 
 program

@@ -2,18 +2,16 @@ import CoreGraphics
 import CoreText
 import Foundation
 
-extension String {
-	package static let fluentIconName = "FluentSystemIcons-Resizable"
-}
-
 public enum FontRegistration {
 	public static func registerFonts(from bundle: Bundle? = nil) {
-#if SWIFT_PACKAGE
+		#if SWIFT_PACKAGE
 		let fontBundle = bundle ?? Bundle.module
-#else
+		#else
 		let fontBundle = bundle ?? Bundle(for: Self.self)
-#endif
-		registerFont(bundle: fontBundle, fontName: .fluentIconName, fontExtension: "ttf")
+		#endif
+		FluentIconFont.allCases.forEach { font in
+			registerFont(bundle: fontBundle, fontName: font.file, fontExtension: "ttf")
+		}
 	}
 
 	fileprivate static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) {
