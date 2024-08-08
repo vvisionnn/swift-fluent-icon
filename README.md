@@ -2,6 +2,8 @@
 
 [![Build](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/build.yml/badge.svg)](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/build.yml)
 [![Release](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/release.yml/badge.svg)](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/release.yml)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fvvisionnn%2Fswift-fluent-icon%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/vvisionnn/swift-fluent-icon)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fvvisionnn%2Fswift-fluent-icon%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/vvisionnn/swift-fluent-icon)
 
 > [!NOTE]  
 > `swift-fluent-icon` is currently work in progress
