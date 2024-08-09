@@ -53,8 +53,8 @@ jobs:
 
       - name: Generate new package content
         run: |
-          bun run .generator/index.ts --input /tmp/fluent --output .
-          swiftformat .
+          mise x -- bun run .generator/index.ts --input /tmp/fluent --output .
+          mise x -- swiftformat .
 
       - name: Release new version
         run: |
