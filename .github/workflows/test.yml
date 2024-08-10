@@ -34,7 +34,7 @@ jobs:
       - name: Select Xcode 15.4
         run: sudo xcode-select -s /Applications/Xcode_15.4.app
 
-      - name: Build Package {{ matrix.destination }}
+      - name: Test Package ${{ matrix.destination }}
         run: |
           mise use --global xcbeautify
           xcodebuild \
