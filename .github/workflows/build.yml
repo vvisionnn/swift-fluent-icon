@@ -45,7 +45,7 @@ jobs:
             -scheme FluentIcon \
             -destination ${{ matrix.destination }} \
             -configuration ${{ matrix.config }} \
-            build | xcbeautify
+            build | xcbeautify --renderer github-actions
 
       - name: Build Package ${{ matrix.config }}
         run: swift build -c ${{ matrix.config }}
