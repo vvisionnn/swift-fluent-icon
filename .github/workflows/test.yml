@@ -40,5 +40,5 @@ jobs:
           xcodebuild \
             -workspace ./FluentIcon.xcworkspace \
             -scheme FluentIcon \
-            -destination ${{ matrix.destination }} \
+            -destination '${{ matrix.destination }}' \
             test | xcbeautify --renderer github-actions

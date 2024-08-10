@@ -43,7 +43,7 @@ jobs:
           xcodebuild \
             -workspace ./FluentIcon.xcworkspace \
             -scheme FluentIcon \
-            -destination ${{ matrix.destination }} \
+            -destination '${{ matrix.destination }}' \
             -configuration ${{ matrix.config }} \
             build | xcbeautify --renderer github-actions
 
