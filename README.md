@@ -4,11 +4,10 @@
 [![Release](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/release.yml/badge.svg)](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/release.yml)
 [![Test](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/test.yml/badge.svg)](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/test.yml)
 [![Format](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/format.yml/badge.svg)](https://github.com/vvisionnn/swift-fluent-icon/actions/workflows/format.yml)
-
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fvvisionnn%2Fswift-fluent-icon%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/vvisionnn/swift-fluent-icon)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fvvisionnn%2Fswift-fluent-icon%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/vvisionnn/swift-fluent-icon)
 
-> [!NOTE]  
+> [!WARNING]  
 > `swift-fluent-icon` is currently work in progress
 
 > [!IMPORTANT]  
