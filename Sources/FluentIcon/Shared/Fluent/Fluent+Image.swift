@@ -19,12 +19,12 @@ extension Fluent.Image {
 			icon: icon,
 			fontSize: fontSize
 		)
-		
-#if os(iOS) || os(watchOS) || os(tvOS)
+
+		#if os(iOS) || os(watchOS) || os(tvOS)
 		UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
 		attributedString.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
 		let image = UIGraphicsGetImageFromCurrentImageContext()
-		
+
 		UIGraphicsEndImageContext()
 		if let image = image {
 			let imageOrientation = image.imageOrientation
@@ -32,7 +32,7 @@ extension Fluent.Image {
 		} else {
 			self.init()
 		}
-#elseif os(OSX)
+		#elseif os(OSX)
 		let boxSize: NSSize = attributedString.size()
 		let rect = NSRect(x: 0, y: 0, width: boxSize.width, height: boxSize.height)
 		let image = NSImage(size: boxSize)
@@ -41,15 +41,15 @@ extension Fluent.Image {
 		rect.fill()
 		attributedString.draw(in: rect)
 		image.unlockFocus()
-		
+
 		if let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) {
 			self.init(cgImage: cgImage, size: boxSize)
 		} else {
 			self.init()
 		}
-#endif
+		#endif
 	}
-	
+
 	public convenience init<Fluency: Fluent>(
 		icon: Fluency,
 		size: CGFloat,
