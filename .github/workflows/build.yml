@@ -16,7 +16,7 @@ concurrency:
 jobs:
   library-check:
     name: Build Library
-    runs-on: macos-14
+    runs-on: macos-latest
     strategy:
       matrix:
         destination:
@@ -40,7 +40,7 @@ jobs:
       - name: Build Package on ${{ matrix.destination }}
         run: |
           mise use --global xcbeautify
-          xcodebuild \
+          set -o pipefail && xcodebuild \
             -workspace ./FluentIcon.xcworkspace \
             -scheme FluentIcon \
             -destination '${{ matrix.destination }}' \

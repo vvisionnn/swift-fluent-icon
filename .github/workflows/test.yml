@@ -16,7 +16,7 @@ concurrency:
 jobs:
   unittest:
     name: Unit Test
-    runs-on: macos-14
+    runs-on: macos-latest
     strategy:
       matrix:
         destination:
@@ -37,7 +37,7 @@ jobs:
       - name: Test Package ${{ matrix.destination }}
         run: |
           mise use --global xcbeautify
-          xcodebuild \
+          set -o pipefail && xcodebuild \
             -workspace ./FluentIcon.xcworkspace \
             -scheme FluentIconTests \
             -destination '${{ matrix.destination }}' \
