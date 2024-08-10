@@ -5,6 +5,12 @@ import SwiftUI
 import XCTest
 
 final class FluentIconColorMacosTests: XCTestCase {
+	override func invokeTest() {
+		withSnapshotTesting(diffTool: .ksdiff) {
+			super.invokeTest()
+		}
+	}
+
 	@MainActor
 	func testDefaultColor() {
 		let icon = NSImageView(image: FluentIcon.Filled.sparkle48.asImage())
@@ -13,6 +19,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 48, height: 48)
 			)
 		)
@@ -27,6 +34,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: tintedIcon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 48, height: 48)
 			)
 		)
@@ -40,6 +48,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 96, height: 96)
 			)
 		)
@@ -50,6 +59,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon2,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 96, height: 96)
 			)
 		)
@@ -63,6 +73,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 50, height: 50)
 			)
 		)
@@ -77,6 +88,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 48, height: 48)
 			)
 		)
@@ -91,6 +103,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 96, height: 96)
 			)
 		)
@@ -105,6 +118,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 96, height: 96)
 			)
 		)
@@ -119,6 +133,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -134,6 +149,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 96, height: 96)
 			)
 		)
@@ -148,6 +164,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 50, height: 50)
 			)
 		)
@@ -162,6 +179,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -176,6 +194,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -190,6 +209,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -204,6 +224,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -218,6 +239,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -232,6 +254,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -246,6 +269,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -260,6 +284,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -274,6 +299,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
@@ -288,6 +314,7 @@ final class FluentIconColorMacosTests: XCTestCase {
 			of: icon,
 			as: .image(
 				precision: 0.95,
+				perceptualPrecision: 0.95,
 				size: .init(width: 32, height: 32)
 			)
 		)
