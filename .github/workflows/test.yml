@@ -39,6 +39,6 @@ jobs:
           mise use --global xcbeautify
           xcodebuild \
             -workspace ./FluentIcon.xcworkspace \
-            -scheme FluentIcon \
+            -scheme FluentIconTests \
             -destination '${{ matrix.destination }}' \
             test | xcbeautify --renderer github-actions
