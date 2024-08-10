@@ -1,0 +1,6 @@
+- {
+    NSBackgroundColor = "Generic Gray Gamma 2.2 Profile colorspace 0 0";
+    NSColor = "Catalog color: System controlTextColor";
+    NSFont = "\"FluentSystemIcons-Filled 48.00 pt. P [] () fobj=, spc=0.00\"";
+    NSParagraphStyle = "Alignment Center, LineSpacing 0, ParagraphSpacing 0, ParagraphSpacingBefore 0, HeadIndent 0, TailIndent 0, FirstLineHeadIndent 0, LineHeight 0/0, LineHeightMultiple 0, LineBreakMode WordWrapping, Tabs (\n    28L,\n    56L,\n    84L,\n    112L,\n    140L,\n    168L,\n    196L,\n    224L,\n    252L,\n    280L,\n    308L,\n    336L\n), DefaultTabInterval 0, Blocks (\n), Lists (\n), BaseWritingDirection Natural, HyphenationFactor 0, TighteningForTruncation YES, HeaderLevel 0 LineBreakStrategy 0 PresentationIntents (\n) ListIntentOrdinal 0 CodeBlockIntentLanguageHint ''";
+}
