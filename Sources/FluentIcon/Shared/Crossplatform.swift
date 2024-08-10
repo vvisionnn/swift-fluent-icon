@@ -26,5 +26,14 @@ extension Fluent.Font {
 			.compactMap { $0.first as? String } ?? []
 	}
 }
-
 #endif
+
+extension Fluent.Color {
+	static var defaultColor: Fluent.Color {
+		#if os(macOS)
+		return .controlTextColor
+		#elseif os(iOS) || os(watchOS) || os(tvOS)
+		return Fluent.Color.tintColor
+		#endif
+	}
+}

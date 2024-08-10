@@ -5,34 +5,22 @@ import SwiftUI
 extension Font {
 	var textStyle: Fluent.Font.TextStyle? {
 		switch self {
-		case .largeTitle:
-			#if os(tvOS)
-			return nil
-			#else
-			return .largeTitle
-			#endif
-		case .title:
-			return .title1
-		case .title:
-			return .title2
-		case .title:
-			return .title3
-		case .headline:
-			return .headline
-		case .subheadline:
-			return .subheadline
-		case .body:
-			return .body
-		case .callout:
-			return .callout
-		case .footnote:
-			return .footnote
-		case .caption:
-			return .caption1
-		case .caption:
-			return .caption2
-		default:
-			return nil
+		#if os(tvOS)
+		case .largeTitle: nil
+		#else
+		case .largeTitle: .largeTitle
+		#endif
+		case .title: .title1
+		case .title2: .title2
+		case .title3: .title3
+		case .headline: .headline
+		case .subheadline: .subheadline
+		case .body: .body
+		case .callout: .callout
+		case .footnote: .footnote
+		case .caption: .caption1
+		case .caption2: .caption2
+		default: nil
 		}
 	}
 }

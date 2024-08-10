@@ -4,8 +4,7 @@ import SwiftUI
 // MARK: - ContentView
 
 struct ContentView: View {
-	@State
-	var selectedVariant: FluentIconVariant = .regular
+	@State var selectedVariant: FluentIconVariant = .regular
 
 	var body: some View {
 		ZStack {
@@ -46,8 +45,7 @@ struct FluentIconDisplayView<
 >: View where Icon.AllCases: RandomAccessCollection {
 	let icon: Icon.Type
 
-	@Environment(\.colorScheme)
-	var colorScheme
+	@Environment(\.colorScheme) var colorScheme
 
 	var body: some View {
 		GeometryReader { proxy in
@@ -69,9 +67,6 @@ struct FluentIconDisplayView<
 					ForEach(icon.allCases, id: \.self) { icon in
 						VStack(spacing: 0) {
 							icon.image
-							#if os(macOS)
-								.foregroundColor(colorScheme == .dark ? NSColor.white : NSColor.black)
-							#endif
 								.size(columnWidth - 40)
 								.frame(width: columnWidth, height: columnWidth)
 
@@ -151,5 +146,4 @@ extension FluentIcon.Resizable: Identifiable {
 	#if os(macOS)
 	.frame(width: 800 / 1.414, height: 800)
 	#endif
-	.previewDisplayName("Fluent Icon")
 }

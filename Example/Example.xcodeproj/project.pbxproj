@@ -12,6 +12,8 @@
 		8B91EB892C63AB6000434D09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91EB882C63AB6000434D09 /* ContentView.swift */; };
 		8B91EB8B2C63AB6100434D09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B91EB8A2C63AB6100434D09 /* Assets.xcassets */; };
 		8B91EB8F2C63AB6100434D09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B91EB8E2C63AB6100434D09 /* Preview Assets.xcassets */; };
+		8BBA5AC52C672464008BC085 /* SwiftUIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA5AC42C672464008BC085 /* SwiftUIEnvironment.swift */; };
+		8BBA5AC72C6728B4008BC085 /* UIKitEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA5AC62C6728B4008BC085 /* UIKitEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		8B91EB8A2C63AB6100434D09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B91EB8C2C63AB6100434D09 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		8B91EB8E2C63AB6100434D09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8BBA5AC42C672464008BC085 /* SwiftUIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIEnvironment.swift; sourceTree = "<group>"; };
+		8BBA5AC62C6728B4008BC085 /* UIKitEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +59,13 @@
 		8B91EB852C63AB6000434D09 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				8B91EB862C63AB6000434D09 /* ExampleApp.swift */,
-				8B91EB882C63AB6000434D09 /* ContentView.swift */,
-				8B91EB8A2C63AB6100434D09 /* Assets.xcassets */,
-				8B91EB8C2C63AB6100434D09 /* Example.entitlements */,
 				8B91EB8D2C63AB6100434D09 /* Preview Content */,
+				8B91EB8C2C63AB6100434D09 /* Example.entitlements */,
+				8B91EB882C63AB6000434D09 /* ContentView.swift */,
+				8B91EB862C63AB6000434D09 /* ExampleApp.swift */,
+				8BBA5AC42C672464008BC085 /* SwiftUIEnvironment.swift */,
+				8BBA5AC62C6728B4008BC085 /* UIKitEnvironment.swift */,
+				8B91EB8A2C63AB6100434D09 /* Assets.xcassets */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -155,6 +161,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BBA5AC72C6728B4008BC085 /* UIKitEnvironment.swift in Sources */,
+				8BBA5AC52C672464008BC085 /* SwiftUIEnvironment.swift in Sources */,
 				8B91EB892C63AB6000434D09 /* ContentView.swift in Sources */,
 				8B91EB872C63AB6000434D09 /* ExampleApp.swift in Sources */,
 			);
@@ -286,6 +294,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
+				DEVELOPMENT_TEAM = 89992K22Z7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -322,6 +331,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
+				DEVELOPMENT_TEAM = 89992K22Z7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

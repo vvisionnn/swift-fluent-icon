@@ -1,6 +1,6 @@
 // MARK: - FluentIconFont
 
-enum FluentIconFont: String, AwesomeFont, CaseIterable {
+enum FluentIconFont: String, FluentFont, CaseIterable {
 	case regular = "FluentSystemIcons-Regular"
 	case filled = "FluentSystemIcons-Filled"
 	case light = "FluentSystemIcons-Light"
@@ -22,7 +22,7 @@ enum FluentIconFont: String, AwesomeFont, CaseIterable {
 // MARK: - FluentIcon.Regular + Fluent
 
 extension FluentIcon.Regular: Fluent {
-	public var fontType: any AwesomeFont {
+	public var fontType: any FluentFont {
 		FluentIconFont.regular
 	}
 }
@@ -30,7 +30,7 @@ extension FluentIcon.Regular: Fluent {
 // MARK: - FluentIcon.Filled + Fluent
 
 extension FluentIcon.Filled: Fluent {
-	public var fontType: any AwesomeFont {
+	public var fontType: any FluentFont {
 		FluentIconFont.filled
 	}
 }
@@ -38,7 +38,7 @@ extension FluentIcon.Filled: Fluent {
 // MARK: - FluentIcon.Light + Fluent
 
 extension FluentIcon.Light: Fluent {
-	public var fontType: any AwesomeFont {
+	public var fontType: any FluentFont {
 		FluentIconFont.light
 	}
 }
@@ -46,7 +46,7 @@ extension FluentIcon.Light: Fluent {
 // MARK: - FluentIcon.Resizable + Fluent
 
 extension FluentIcon.Resizable: Fluent {
-	public var fontType: any AwesomeFont {
+	public var fontType: any FluentFont {
 		FluentIconFont.resizable
 	}
 }

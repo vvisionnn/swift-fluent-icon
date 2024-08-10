@@ -6,12 +6,11 @@ let package = Package(
 	name: "swift-fluent-icon",
 	platforms: [.iOS(.v15), .macOS(.v12)],
 	products: [
-		.library(
-			name: "FluentIcon",
-			targets: ["FluentIcon"]
-		),
+		.library(name: "FluentIcon", targets: ["FluentIcon"]),
 	],
-	dependencies: [],
+	dependencies: [
+		.package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.17.4"),
+	],
 	targets: [
 		.target(
 			name: "FluentIcon",
@@ -20,7 +19,10 @@ let package = Package(
 		),
 		.testTarget(
 			name: "FluentIconTests",
-			dependencies: ["FluentIcon"]
+			dependencies: [
+				.target(name: "FluentIcon"),
+				.product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+			]
 		),
 	]
 )
