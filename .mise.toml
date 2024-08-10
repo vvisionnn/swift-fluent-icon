@@ -1,3 +1,4 @@
 [tools]
 swiftformat = "latest"
+xcbeautify = "latest"
 bun = "1"
