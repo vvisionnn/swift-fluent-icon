@@ -9,13 +9,13 @@ final class FluentFontExtensionTests: XCTestCase {
 		let fontNames = Fluent.Font.fontNames(forFamilyName: fontFamily)
 		XCTAssertFalse(fontNames.isEmpty, "Font names should not be empty for existing font family \(fontFamily)")
 	}
-	
+
 	func testFontNamesForNonExistingFamily() {
 		let fontFamily = "NonExistingFontFamily"
 		let fontNames = Fluent.Font.fontNames(forFamilyName: fontFamily)
 		XCTAssertTrue(fontNames.isEmpty, "Font names should be empty for non-existing font family \(fontFamily)")
 	}
-	
+
 	func testFontNamesForEmptyFamilyName() {
 		let fontFamily = ""
 		let fontNames = Fluent.Font.fontNames(forFamilyName: fontFamily)
