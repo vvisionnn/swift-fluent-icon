@@ -42,29 +42,29 @@ jobs:
           fi
           echo "UP_TO_DATE=$UP_TO_DATE" >> $GITHUB_ENV
       - name: Checkout fluent icon to tmp folder
-        if: ${{ env.UP_TO_DATE == 'true' && success() }}
+        if: ${{ env.UP_TO_DATE == 'false' && success() }}
         run: |
           mkdir -p /tmp/fluent
           git clone --depth 1 --branch ${{ env.LATEST_FLUENT_ICON }} https://github.com/microsoft/fluentui-system-icons /tmp/fluent
 
       - name: Checkout package repo
-        if: ${{ env.UP_TO_DATE == 'true' && success() }}
+        if: ${{ env.UP_TO_DATE == 'false' && success() }}
         uses: actions/checkout@v4
 
       - name: Install Dev Tools
-        if: ${{ env.UP_TO_DATE == 'true' && success() }}
+        if: ${{ env.UP_TO_DATE == 'false' && success() }}
         run: |
           brew install mise
           mise install
 
       - name: Generate new package content
-        if: ${{ env.UP_TO_DATE == 'true' && success() }}
+        if: ${{ env.UP_TO_DATE == 'false' && success() }}
         run: |
           mise x -- bun run .generator/index.ts --input /tmp/fluent --output .
           mise x -- swiftformat .
 
       - name: Release new version
-        if: ${{ env.UP_TO_DATE == 'true' && success() }}
+        if: ${{ env.UP_TO_DATE == 'false' && success() }}
         run: |
           # Commit updated Package.swift
           git config user.name "${{ github.actor }}"
