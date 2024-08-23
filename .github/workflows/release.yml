@@ -66,19 +66,21 @@ jobs:
       - name: Release new version
         if: ${{ env.UP_TO_DATE == 'false' && success() }}
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           # Commit updated Package.swift
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           # check if local change exist
           if [[ -n $(git status --porcelain) ]]; then
-            branch="release/${{ env.LATEST_FLUENT_ICON }}"
-            git checkout -b $branch
             git add .
             git commit -m "chore(release): ${{ env.LATEST_FLUENT_ICON }}"
-            git push -u origin $branch
-            gh pr create --fill
+            git push origin master
+
+            # Tag and release new version
+            git tag ${{ env.LATEST_FLUENT_ICON }}
+            git push origin ${{ env.LATEST_FLUENT_ICON }}
+            gh release create ${{ env.LATEST_FLUENT_ICON }}
           else
             echo "No changes detected, skipping release"
           fi
