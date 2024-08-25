@@ -6,8 +6,8 @@ enum FluentIconFont: String, FluentFont, CaseIterable {
 	case light = "FluentSystemIcons-Light"
 	case resizable = "FluentSystemIcons-Resizable"
 
-	public var file: String { rawValue }
-	public var name: String { file }
+	var file: String { rawValue }
+	var name: String { file }
 
 	var description: String {
 		switch self {
