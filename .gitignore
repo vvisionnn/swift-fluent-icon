@@ -67,3 +67,6 @@ fastlane/test_output
 /*.swiftinterface
 /*.xcodeproj
 xcuserdata/
+
+swift-fluent-icon.xcodeproj/
+Derived/
