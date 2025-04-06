@@ -53,12 +53,16 @@ jobs:
 
       - name: Install Dev Tools
         if: ${{ env.UP_TO_DATE == 'false' && success() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           brew install mise
           mise install
 
       - name: Generate new package content
         if: ${{ env.UP_TO_DATE == 'false' && success() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mise x -- bun run .generator/index.ts --input /tmp/fluent --output .
           mise x -- swiftformat .

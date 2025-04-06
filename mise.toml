@@ -2,3 +2,8 @@
 swiftformat = "latest"
 xcbeautify = "latest"
 bun = "1"
+
+[settings]
+jobs = 10
+lockfile = true
+experimental = true
