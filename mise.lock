@@ -2,6 +2,9 @@
 version = "1.2.8"
 backend = "core:bun"
 
+[tools.bun.checksums]
+"bun-darwin-aarch64.zip" = "sha256:8a806a40a037329e4fb559457267f6c4ebe8204cbbacdb03f39b349bed5aa355"
+
 [tools.swiftformat]
 version = "0.55.5"
 backend = "asdf:swiftformat"
@@ -9,3 +12,6 @@ backend = "asdf:swiftformat"
 [tools.xcbeautify]
 version = "2.28.0"
 backend = "ubi:cpisciotta/xcbeautify"
+
+[tools.xcbeautify.checksums]
+xcbeautify-macos-aarch64 = "sha256:e49ca0215985ed59327158b1b662e8b90e1e8ba521382f78e588220664e58dc2"
