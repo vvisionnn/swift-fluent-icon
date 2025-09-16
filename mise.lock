@@ -1,4 +1,4 @@
-[tools.bun]
+[[tools.bun]]
 version = "1.2.8"
 backend = "core:bun"
 
@@ -6,11 +6,11 @@ backend = "core:bun"
 checksum = "blake3:f5e7c5e6fa6cc2e11aa1c29cf9678b909031615fba2102ab6d125e6b3eb621f1"
 size = 20697067
 
-[tools.swiftformat]
+[[tools.swiftformat]]
 version = "0.55.5"
 backend = "asdf:swiftformat"
 
-[tools.xcbeautify]
+[[tools.xcbeautify]]
 version = "2.28.0"
 backend = "ubi:cpisciotta/xcbeautify"
 
