@@ -1,10 +1,7 @@
 [[tools.bun]]
 version = "1.2.8"
 backend = "core:bun"
-
-[tools.bun.platforms.macos-arm64]
-checksum = "blake3:f5e7c5e6fa6cc2e11aa1c29cf9678b909031615fba2102ab6d125e6b3eb621f1"
-size = 20697067
+"platforms.macos-arm64" = { checksum = "blake3:f5e7c5e6fa6cc2e11aa1c29cf9678b909031615fba2102ab6d125e6b3eb621f1"}
 
 [[tools.swiftformat]]
 version = "0.55.5"
@@ -13,6 +10,4 @@ backend = "asdf:swiftformat"
 [[tools.xcbeautify]]
 version = "2.28.0"
 backend = "ubi:cpisciotta/xcbeautify"
-
-[tools.xcbeautify.platforms.macos-arm64-xcbeautify]
-checksum = "blake3:08017a5c40f8091261a4724fd8468ec3501aa001215a772d42006714447aca90"
+"platforms.macos-arm64-xcbeautify" = { checksum = "blake3:08017a5c40f8091261a4724fd8468ec3501aa001215a772d42006714447aca90"}
