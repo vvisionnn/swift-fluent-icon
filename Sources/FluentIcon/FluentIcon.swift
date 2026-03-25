@@ -14945,6 +14945,9 @@ public enum FluentIcon {
 		case headphonesConvertible20 = "\u{f0bbf}"
 		case headphonesMonoaural16 = "\u{f0bc0}"
 		case headphonesMonoaural20 = "\u{f0bc1}"
+		case dataHistogram28 = "\u{f0bc2}"
+		case tabDesktopBottom28 = "\u{f0bc3}"
+		case tabDesktopMultipleBottom28 = "\u{f0bc4}"
 	}
 
 	public enum Filled: String, CaseIterable, Sendable {
@@ -24484,6 +24487,9 @@ public enum FluentIcon {
 		case headphonesConvertible20 = "\u{f0c3d}"
 		case headphonesMonoaural16 = "\u{f0c3e}"
 		case headphonesMonoaural20 = "\u{f0c3f}"
+		case dataHistogram28 = "\u{f0c40}"
+		case tabDesktopBottom28 = "\u{f0c41}"
+		case tabDesktopMultipleBottom28 = "\u{f0c42}"
 	}
 
 	public enum Light: String, CaseIterable, Sendable {
